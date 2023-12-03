@@ -30,8 +30,26 @@ const limit = rateLimit({
     max:3000
 })
 
-// Database
+// Database Connection
+// let mongoURI = '';
+// let OPTION = {user:"", pass:"", autoIndex:true};
 
+// mongoose.connect(mongoURI, OPTION)
+//      .then( ()=>
+//      console.log("Connected to mongo Successful")
+//      .then((e)=>{
+//         console.log(e);
+//      })
+//      )
 
-app.use("/api/v1", router);
+     
+     // Managing BackEnd Api 
+     app.use("/api/v1", router);
+     
+     // Managing FrontEnd Api
+     app.use(express.static("client/dist"))
+     app.get("*", (req, res)=>{
+         req.sendFile(path.resolve(--__dirname, "client", "dist", "index.html"))
+     })
+
 module.exports=app;
