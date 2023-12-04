@@ -10,9 +10,9 @@ router.post("/CreateProduct", productController.CreateProduct);
 router.get("/ReadProduct", productController.ReadProduct);
 
 // Update
-router.get("/UpdateProduct", productController.UpdateProduct);
+router.post("/UpdateProduct/:id", productController.UpdateProduct);
 
 // DELETE
-router.get("/DeleteProduct", productController.DeleteProduct);
+router.get("/DeleteProduct/:id", productController.DeleteProduct);
 
 module.exports=router;

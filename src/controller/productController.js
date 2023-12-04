@@ -4,10 +4,10 @@ const ProductModel = require("../model/productModel");
 exports.CreateProduct = async (req, res)=>{
     try{
         let reqBody = req.body;
-        let result = await ProductModel.Create(reqBody);
+        let result = await ProductModel.create(reqBody);
         res.status(200).json({status:"Product Created", data:result})
     }catch(e){
-        res.status(200).json({status:"Unsuccess", data:e})
+        res.status(200).json({status:"Unsuccess", data:e.toString()})
 }
 }
 
@@ -41,9 +41,9 @@ exports.DeleteProduct=async (req, res)=>{
     try {
         let id = req.params.id;
         let query = {_id:id}
-        let result = await ProductModel.updateOne(query);
+        let result = await ProductModel.deleteOne(query);
         res.status(200).json({status:"Product Delete Success", data:result})
     } catch (e) {
-        res.status(200).json({status:"Unsuccess", data:e})
+        res.status(200).json({status:"Unsuccess", data:e.toString()})
     }
 }

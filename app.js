@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path")
 const router = require("./src/router/api")
 const app = new express();
 const bodyParser = require("body-parser")
@@ -29,16 +30,13 @@ const limit = rateLimit({windoMs: 15*60*100,max:3000});
 app.use(limit);
 
 // Database Connection
-// let mongoURI = '';
-// let OPTION = {user:"", pass:"", autoIndex:true};
+let mongoURI = 'mongodb+srv://<username>:<password>@crud.u88w9ny.mongodb.net/CRUD';
+let OPTION = {user:"CRUD", pass:"CRUD", autoIndex:true};
 
-// mongoose.connect(mongoURI, OPTION)
-//      .then( ()=>
-//      console.log("Connected to mongo Successful")
-//      .then((e)=>{
-//         console.log(e);
-//      })
-//      )
+mongoose.connect(mongoURI, OPTION)
+     .then( ()=>
+     console.log("Connected to mongo Successful")
+     )
 
      
      // Managing BackEnd Api 
