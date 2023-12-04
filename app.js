@@ -25,10 +25,8 @@ app.use(xss());
 app.use(bodyParser.json());
 
 // Rate limit
-const limit = rateLimit({
-    windoMs: 15*60*100,
-    max:3000
-})
+const limit = rateLimit({windoMs: 15*60*100,max:3000});
+app.use(limit);
 
 // Database Connection
 // let mongoURI = '';
